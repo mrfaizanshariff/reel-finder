@@ -129,7 +129,7 @@ export default function Home() {
                 <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                   <div 
                     className="instagram-embed"
-                    html
+                    dangerouslySetInnerHTML={{__html: embedHtml}}
                   />
                 </div>
               ))}
