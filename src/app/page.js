@@ -31,6 +31,7 @@ export default function Home() {
     setError('');
     
     try {
+      setResults([]);
       // Replace with your actual API endpoint
       const response = await fetch('https://instagram-post-finder-fastapi.onrender.com/get-embed-codes', {
         method: 'POST',
@@ -59,6 +60,20 @@ export default function Home() {
         <title>Reels Finder | Search Instagram Reels</title>
         <meta name="description" content="Search Instagram reels by username and keyword" />
         <link rel="icon" href="/favicon.ico" />
+        <style>{`
+          /* Custom CSS to improve visibility in dark mode */
+          @media (prefers-color-scheme: dark) {
+            input {
+              color: #000000 !important; 
+              background-color: #ffffff !important;
+            }
+            
+            ::placeholder {
+              color: #6b7280 !important;
+              opacity: 1 !important;
+            }
+          }
+        `}</style>
       </Head>
 
       <main className="container mx-auto px-4 py-8">
@@ -78,7 +93,7 @@ export default function Home() {
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-black bg-white"
                 placeholder="e.g. natgeo"
                 required
               />
@@ -93,7 +108,7 @@ export default function Home() {
                 id="search_key"
                 value={search_key}
                 onChange={(e) => setKeyword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-black bg-white"
                 placeholder="e.g. wildlife"
                 required
               />
